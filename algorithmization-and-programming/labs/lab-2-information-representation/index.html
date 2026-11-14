@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8">
+		<title>АиП: Упражнение №2</title>
+		<script async src="/script/generator.js"></script>
+		<link rel="stylesheet" href="style.css">
+		<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+	</head>
+	<body>
+		<h2>Упражнение №2. Представление информации в памяти компьютера</h2>
+		<div id="content"></div>
+		<h3>Указания</h3>
+		<ol>
+			<li>
+				<p>Число в \(n\)-ричной системе счисления:</p>
+				<p>\[\overline{d_kd_{k-1}\dots d_2d_1d_0}=\sum\limits_{i=0}^k d_i\times n^i\]</p>
+				<p>где \(d_i\) — \(i\)-ая цифра числа (\(d_i\in\left[0;n-1\right]\)), а \(k\) — количество значащих цифр числа.</p>
+				<p>Для записи числа в \(n\)-ричной системе счисления необходимо представить его в данном виде.</p>
+				<p>Например, для записи числа \(211_{10}\) в двоичной системе счисления, необходимо представить его как сумму степеней двоек:</p>
+				<p>\[211=128+83=128+64+19=128+64+16+3=128+64+16+2+1\]</p>
+				<p>\[211=2^7+2^6+2^4+2^1+2^0\]</p>
+				<p>\[211=1\times 2^7+1\times 2^6+0\times 2^5+1\times 2^4+0\times 2^3+0\times 2^2+1\times 2^1+1\times 2^0\]</p>
+				<p>\[211_{10}=11010011_2\]</p>
+				<p>Получить такое разложение для целых чисел можно последовательным делением на основание системы счисления с выписыванием остатков.</p>
+				<p>Для дробных чисел такое разложение продолжается для отрицательных значений индекса \(i\).</p>
+				<p>Например, запишем число \(234,56\) в двоичной системе счисления:</p>
+				<p>\[234,56=2^7+106,56=2^7+2^6+42,56=2^7+2^6+2^5+10,56=2^7+2^6+2^5+2^3+2,56=\\=2^7+2^6+2^5+2^3+2^1+0,56=2^7+2^6+2^5+2^3+2^1+2^{-1}+0,06=\\=2^7+2^6+2^5+2^3+2^1+2^{-1}+2^{-5}+0,02875=\\=2^7+2^6+2^5+2^3+2^1+2^{-1}+2^{-5}+2^{-6}+0,013125\]</p>
+				<p>Данное разложение можно продолжать до бесконечности, т.к. в двоичной системе счисления это число не представимо конечной двоичной дробью, его лишь можно записать как бесконечную периодическую двоичную дробь. Запишем округлённое значение:</p>
+				<p>\[234,56_{10}\approx 11101010,100011_2\]</p>
+				<p>На самом деле, чтобы записать данное число, округлённое в двоичной системе счисления до \(6\)-ти цифр после запятой, необходимо вычислить \(7\)-ую цифру. А так как она равна \(1\), то округлённое значение будет записано так:</p>
+				<p>\[234,56_{10}\approx 11101010,100100_2\]</p>
+			</li>
+			<li>
+				<p>Для представления знаковых целых чисел можно применять прямое кодирование. Его суть заключается в том, что последний бит из всех, выделенных под хранение числа, отводится под знак (\(0\) — число положительное; \(1\) — число отрицательное).</p>
+			</li>
+			<li>
+				<p>Также для представления знаковых целых чисел можно применять дополнительное кодирование. Оно позволяет одинаково осуществлять в двоичной системе счисления операция суммирования и вычитания чисел как для знаковых, так и для беззнаковых чисел.</p>
+				<p>Суть допоолнительного кодирования также заключается в том, что последний бит из всех, выделенных под хранение числа, отводится под знак (\(0\) — число положительное; \(1\) — число отрицательное). Но при этом для записи отрицательного числа сначала в двоичной системе счисления записывают положительное число, затем все биты этого числа инвертируют (\(0\) меняют на \(1\), а \(1\) — на \(0\)). К полученному числу пребавляют \(1\).</p>
+				<p>Для преобразования из дополнительного кода в число выполняют обратную операцию. Если старший бит равен \(0\), то число положительное и его переводят из двоичной системы счисления обычным образом. Если старший бит равен \(1\), то число отрицательное, и из него вычитают \(1\), затем все биты инвертируют и полученное значение переводят из двоичной системы счисления, записывая в конце знак минус.</p>
+			</li>
+			<li>
+				<p>Для представления символов в памяти применяют специальные кодировочные таблицы. Во всех таких таблицах первые 128 символов кодируются по правилам ASCII-кодировки. Такая таблица представлена ниже:</p>
+				<table class="bordered">
+					<tbody>
+						<tr>
+							<th> </th>
+							<th>_0</th>
+							<th>_1</th>
+							<th>_2</th>
+							<th>_3</th>
+							<th>_4</th>
+							<th>_5</th>
+							<th>_6</th>
+							<th>_7</th>
+							<th>_8</th>
+							<th>_9</th>
+							<th>_A</th>
+							<th>_B</th>
+							<th>_C</th>
+							<th>_D</th>
+							<th>_E</th>
+							<th>_F</th>
+						</tr>
+						<tr>
+							<th>0_</th>
+							<td> </td>
+							<td>☺</td>
+							<td>☻</td>
+							<td>♥</td>
+							<td>♦</td>
+							<td>♣</td>
+							<td>♠</td>
+							<td>\a</td>
+							<td>\b</td>
+							<td>\t</td>
+							<td>\n</td>
+							<td>♂</td>
+							<td>♀</td>
+							<td>\r</td>
+							<td>♫</td>
+							<td>☼</td>
+						</tr>
+						<tr>
+							<th>1_</th>
+							<td>►</td>
+							<td>◄</td>
+							<td>↕</td>
+							<td>‼</td>
+							<td>¶</td>
+							<td>§</td>
+							<td>▬</td>
+							<td>↨</td>
+							<td>↑</td>
+							<td>↓</td>
+							<td>→</td>
+							<td> </td>
+							<td>˾</td>
+							<td>↔</td>
+							<td>▲</td>
+							<td>▼</td>
+						</tr>
+						<tr>
+							<th>2_</th>
+							<td> </td>
+							<td>!</td>
+							<td>"</td>
+							<td>#</td>
+							<td>$</td>
+							<td>%</td>
+							<td>&amp;</td>
+							<td>'</td>
+							<td>(</td>
+							<td>)</td>
+							<td>*</td>
+							<td>+</td>
+							<td>,</td>
+							<td>-</td>
+							<td>.</td>
+							<td>/</td>
+						</tr>
+						<tr>
+							<th>3_</th>
+							<td>0</td>
+							<td>1</td>
+							<td>2</td>
+							<td>3</td>
+							<td>4</td>
+							<td>5</td>
+							<td>6</td>
+							<td>7</td>
+							<td>8</td>
+							<td>9</td>
+							<td>:</td>
+							<td>;</td>
+							<td>&lt;</td>
+							<td>=</td>
+							<td>&gt;</td>
+							<td>?</td>
+						</tr>
+						<tr>
+							<th>4_</th>
+							<td>@</td>
+							<td>A</td>
+							<td>B</td>
+							<td>C</td>
+							<td>D</td>
+							<td>E</td>
+							<td>F</td>
+							<td>G</td>
+							<td>H</td>
+							<td>I</td>
+							<td>J</td>
+							<td>K</td>
+							<td>L</td>
+							<td>M</td>
+							<td>N</td>
+							<td>O</td>
+						</tr>
+						<tr>
+							<th>5_</th>
+							<td>P</td>
+							<td>Q</td>
+							<td>R</td>
+							<td>S</td>
+							<td>T</td>
+							<td>U</td>
+							<td>V</td>
+							<td>W</td>
+							<td>X</td>
+							<td>Y</td>
+							<td>Z</td>
+							<td>[</td>
+							<td>\</td>
+							<td>]</td>
+							<td>^</td>
+							<td>_</td>
+						</tr>
+						<tr>
+							<th>6_</th>
+							<td>`</td>
+							<td>a</td>
+							<td>b</td>
+							<td>c</td>
+							<td>d</td>
+							<td>e</td>
+							<td>f</td>
+							<td>g</td>
+							<td>h</td>
+							<td>i</td>
+							<td>j</td>
+							<td>k</td>
+							<td>l</td>
+							<td>m</td>
+							<td>n</td>
+							<td>o</td>
+						</tr>
+						<tr>
+							<th>7_</th>
+							<td>p</td>
+							<td>q</td>
+							<td>r</td>
+							<td>s</td>
+							<td>t</td>
+							<td>u</td>
+							<td>v</td>
+							<td>w</td>
+							<td>x</td>
+							<td>y</td>
+							<td>z</td>
+							<td>{</td>
+							<td>|</td>
+							<td>}</td>
+							<td>~</td>
+							<td> </td>
+						</tr>
+					</tbody>
+				</table>
+				<p>Код символа в шестнадцатиричной системе счисления состоит из двух цифр: первая — это цифра в первой ячейке соответствующей строки таблицы; вторая — это цифра в первой ячейке соответствующего столбца таблицы.</p>
+			</li>
+		</ol>
+		<script type="text/javascript">
+			// <![CDATA[
+			let content = document.getElementById('content');
+
+			/*
+			 * взять номер варианта из строки запроса
+			 */
+			function getVariantFromParams(queryString) {
+				if(queryString) {
+					let params = new URLSearchParams(queryString);
+					let variant = params.get('variant');
+					return variant ? parseInt(variant) : -1;
+				} else {
+					return -2;
+				}
+			}
+
+			/*
+			 * сгенерировать случайное число
+			 */
+			let MyRandomNumber = 0;
+
+			function MyRandomize(start) {
+				MyRandomNumber = start;
+			}
+
+			function MyRnd() {
+				MyRandomNumber = 111.111 * MyRandomNumber + Math.PI;
+				MyRandomNumber = MyRandomNumber - Math.floor(MyRandomNumber);
+				return MyRandomNumber;
+			}
+
+			/*
+			 * сгенерировать число в заданной системе
+			 * счисления с заданным количеством цифр
+			 */
+			const Digits = '0123456789ABCDEF';
+
+			/*
+			 * преобразовать число в десятичную систему счисления
+			 */
+			function convertToDecimal(number, radix) {
+				let res = 0;
+				let r = 0;
+				for(let i = 0; i < number.length; i++) {
+					digit = Digits.indexOf(number.charAt(i));
+					if(number.charAt(i) == '.') {
+						r = 1;
+					} else {
+						r *= radix;
+					}
+					if(digit >= 0) {
+						res = res * radix + digit;
+					}
+				}
+				return (r == 0) ? res : res / r;
+			}
+
+			/*
+			 * преобразовать число в заданную систему счисления
+			 */
+			function convertFromDecimal(number, radix) {
+				let count = (arguments.length > 2) ? arguments[2] : 5;
+				let res = '';
+				let r = number - Math.floor(number);
+				do {
+					digit = number % radix;
+					number = Math.floor(number / radix);
+					res = Digits.charAt(digit) + res;
+				} while(number != 0);
+				if(r > 0) {
+					res = res + '.';
+					for(let i = 0; r > 0 && i < count; i++) {
+						r *= radix;
+						digit = Math.floor(r);
+						r -= digit;
+						res += Digits.charAt(digit);
+					}
+				}
+				return res;
+			}
+
+			/*
+			 * преобразовать число из одной системы счисления в другую
+			 */
+			function convertNumber(number, radixFrom, radixTo) {
+				return (arguments.length > 3) ?
+				       convertFromDecimal(convertToDecimal(number, radixFrom), radixTo, arguments[3]) :
+				       convertFromDecimal(convertToDecimal(number, radixFrom), radixTo);
+			}
+
+			/*
+			 * дополнить число нулями до заданного количества разрядов
+			 */
+			function alignNumber(number, size) {
+				number = number.toString();
+				while(number.length < size) {
+					number = '0' + number;
+				}
+				return number;
+			}
+
+			function generateForm(taskNumber, description, exercises) {
+				let form = document.createElement('form');
+				form.setAttribute('id', `task${taskNumber}`);
+				let title = document.createElement('p');
+				title.style.marginTop = '16px';
+				let caption = document.createElement('strong');
+				caption.appendChild(document.createTextNode(`Задание\xA0${taskNumber}:`));
+				title.appendChild(caption);
+				title.appendChild(document.createTextNode(' ' + description));
+				form.appendChild(title);
+				let table = document.createElement('table');
+				exercises.forEach(exercise => {
+					let row = document.createElement('tr');
+					let tdQuestion = document.createElement('td');
+					tdQuestion.style.fontFamily = 'Consolas monospace';
+					tdQuestion.appendChild(document.createTextNode(`${exercise.question}`));
+					row.appendChild(tdQuestion);
+					let tdArrow = document.createElement('td');
+					tdArrow.style.fontSize = 'larger';
+					tdArrow.appendChild(document.createTextNode('\u2192'));
+					row.appendChild(tdArrow);
+					let tdAnswer = document.createElement('td');
+					let input = document.createElement('input');
+					input.setAttribute('type', 'text');
+					input.setAttribute('id', `${exercise.number}`);
+					input.onchange = function() {
+						this.style.backgroundColor = 'white';
+					};
+					tdAnswer.appendChild(input);
+					row.appendChild(tdAnswer);
+					table.appendChild(row);
+				});
+				form.appendChild(table);
+				let button = document.createElement('button');
+				button.setAttribute('type', 'button');
+				button.onclick = check;
+				button.appendChild(document.createTextNode('Проверить задание'));
+				form.appendChild(button);
+				return form;
+			}
+
+			/*
+			 * сгенерировать условие работы
+			 */
+			let ans;
+			let ex;
+
+			function generateTask(variant) {
+				clear(content);
+
+				MyRandomize(Math.sin(variant));
+
+				let task = 0;
+				let exercises = null;
+				let x = null;
+				ex = 0;
+				ans = [];
+
+				let header = document.createElement('h3');
+				header.appendChild(document.createTextNode(`Вариант ${variant}`));
+				content.appendChild(header);
+
+				//-------------------------------------------------
+				task++;
+				exercises = [];
+				for(let i = 1; i <= 4; i++) {
+					ex++;
+					let a = Math.floor(20 + 230 * MyRnd());
+					ans[ex] = alignNumber(convertFromDecimal(a, 2), 8);
+					exercises.push({
+						number: ex,
+						question: a
+					});
+				}
+				content.appendChild(generateForm(task, 'Преобразуйте целое положительное число в 8-битный двоичный прямой код', exercises));
+
+				//-------------------------------------------------
+				task++;
+				exercises = [];
+				for(let i = 1; i <= 4; i++) {
+					ex++;
+					let a = -Math.floor(20 + 100 * MyRnd());
+					ans[ex] = '1' + alignNumber(convertFromDecimal(-a, 2), 7);
+					exercises.push({
+						number: ex,
+						question: a
+					});
+				}
+				content.appendChild(generateForm(task, 'Преобразуйте целое отрицательное число в 8-битный двоичный прямой код', exercises));
+
+				//-------------------------------------------------
+				task++;
+				exercises = [];
+				x = [];
+				for(let i = 1; i <= 4; i++) {
+					ex++;
+					let a = -Math.floor(20 + 100 * MyRnd());
+					x.push(a);
+					let c = '1' + alignNumber(convertFromDecimal(-a, 2), 7);
+					ans[ex] = 128 - a;
+					exercises.push({
+						number: ex,
+						question: c
+					});
+				}
+				content.appendChild(generateForm(task, 'Преобразуйте 8-битный двоичный прямой код в целое положительное число', exercises));
+
+				//-------------------------------------------------
+				task++;
+				exercises = [];
+				for(let i = 1; i <= 4; i++) {
+					ex++;
+					let a = x[i - 1];
+					let c = '1' + alignNumber(convertFromDecimal(-a, 2), 7);
+					ans[ex] = a;
+					exercises.push({
+						number: ex,
+						question: c
+					});
+				}
+				content.appendChild(generateForm(task, 'Преобразуйте 8-битный двоичный прямой код в целое отрицательное число', exercises));
+
+				//-------------------------------------------------
+				task++;
+				exercises = [];
+				for(let i = 1; i <= 4; i++) {
+					ex++;
+					let a = -Math.floor(20 + 100 * MyRnd());
+					ans[ex] = convertFromDecimal(256 + a, 2);
+					exercises.push({
+						number: ex,
+						question: a
+					});
+				}
+				content.appendChild(generateForm(task, 'Преобразуйте целое отрицательное число в 8-битный двоичный дополнительный код', exercises));
+
+				//-------------------------------------------------
+				task++;
+				exercises = [];
+				x = [];
+				for(let i = 1; i <= 4; i++) {
+					ex++;
+					let a = -Math.floor(20 + 100 * MyRnd());
+					x.push(a);
+					let b = 256 + a;
+					let c = convertFromDecimal(b, 2);
+					ans[ex] = b;
+					exercises.push({
+						number: ex,
+						question: c
+					});
+				}
+				content.appendChild(generateForm(task, 'Преобразуйте 8-битный двоичный дополнительный код в целое положительное число', exercises));
+
+				//-------------------------------------------------
+				task++;
+				exercises = [];
+				for(let i = 1; i <= 4; i++) {
+					ex++;
+					let a = x[i - 1];
+					let c = convertFromDecimal(256 + a, 2);
+					ans[ex] = a;
+					exercises.push({
+						number: ex,
+						question: c
+					});
+				}
+				content.appendChild(generateForm(task, 'Преобразуйте 8-битный двоичный дополнительный код в целое отрицательное число', exercises));
+
+				//-------------------------------------------------
+				task++;
+				exercises = [];
+				for(let i = 1; i <= 4; i++) {
+					ex++;
+					let z = Math.floor(50000 + 100000 * MyRnd()) / 1000;
+					ans[ex] = convertFromDecimal(z, 2, 5);
+					exercises.push({
+						number: ex,
+						question: z
+					});
+				}
+				content.appendChild(generateForm(task, 'Преобразуйте дробное число из десятичной системы счисления в двоичную систему счисления с 5-ю цифрам после точки', exercises));
+
+				//-------------------------------------------------
+				task++;
+				exercises = [];
+				for(let i = 1; i <= 4; i++) {
+					ex++;
+					let z = 50 + 100 * MyRnd();
+					z = convertFromDecimal(z, 2, 4) + '1';
+					ans[ex] = convertToDecimal(z, 2);
+					exercises.push({
+						number: ex,
+						question: z
+					});
+				}
+				content.appendChild(generateForm(task, 'Преобразуйте дробное число из двоичной системы счисления в десятичную систему счисления', exercises));
+
+				//-------------------------------------------------
+				task++;
+				exercises = [];
+				for(let i = 1; i <= 4; i++) {
+					ex++;
+					let z = Math.floor(50000 + 250000 * MyRnd()) / 1000;
+					ans[ex] = convertFromDecimal(z, 8, 3);
+					exercises.push({
+						number: ex,
+						question: z
+					});
+				}
+				content.appendChild(generateForm(task, 'Преобразуйте дробное число из десятичной системы счисления в восьмиричную систему счисления с 3-мя цифрами после точки', exercises));
+
+				//-------------------------------------------------
+				task++;
+				exercises = [];
+				for(let i = 1; i <= 4; i++) {
+					ex++;
+					let z = 50 + 349 * MyRnd();
+					z = convertFromDecimal(z, 8, 2);
+					ans[ex] = convertToDecimal(z, 8);
+					exercises.push({
+						number: ex,
+						question: z
+					});
+				}
+				content.appendChild(generateForm(task, 'Преобразуйте дробное число из восьмиричной системы счисления в десятичную систему счисления', exercises));
+
+				//-------------------------------------------------
+				task++;
+				exercises = [];
+				for(let i = 1; i <= 4; i++) {
+					ex++;
+					let z = Math.floor(50000 + 900000 * MyRnd()) / 1000;
+					ans[ex] = convertFromDecimal(z, 16, 3);
+					exercises.push({
+						number: ex,
+						question: z
+					});
+				}
+				content.appendChild(generateForm(task, 'Преобразуйте дробное число из десятичной системы счисления в шестнадцатиричную систему счисления (с 3-мя цифрами после точки)', exercises));
+
+				//-------------------------------------------------
+				task++;
+				exercises = [];
+				for(let i = 1; i <= 4; i++) {
+					ex++;
+					let z = 50 + 949 * MyRnd();
+					z = convertFromDecimal(z, 16, 2);
+					ans[ex] = convertToDecimal(z, 16);
+					exercises.push({
+						number: ex,
+						question: z
+					});
+				}
+				content.appendChild(generateForm(task, 'Преобразуйте дробное число из шестнадцатиричной системы счисления в десятичную систему счисления', exercises));
+
+				//-------------------------------------------------
+				task++;
+				exercises = [];
+				for(let i = 1; i <= 4; i++) {
+					ex++;
+					let code = Math.floor(32 + MyRnd() * (128 - 32));
+					ans[ex] = convertFromDecimal(code, 16);
+					let z = String.fromCharCode(code);
+					exercises.push({
+						number: ex,
+						question: z
+					});
+				}
+				content.appendChild(generateForm(task, 'Запишите код представленного символа в шестнадцатиричной системе счисления', exercises));
+
+				//-------------------------------------------------
+				task++;
+				exercises = [];
+				for(let i = 1; i <= 4; i++) {
+					ex++;
+					let z = Math.floor(32 + MyRnd() * (128 - 32));
+					ans[ex] = String.fromCharCode(z);
+					exercises.push({
+						number: ex,
+						question: z
+					});
+				}
+				content.appendChild(generateForm(task, 'Запишите символ, соответствующий представленному коду в десятичной системе счисления', exercises));
+			}
+
+			function check() {
+				let formElement = this.parentNode;
+				n = formElement.elements.length - 1;
+				for(let i = 0; i < n; i++) {
+					element = formElement.elements[i];
+					j = parseInt(element.id);
+					if(element.value == ans[j]) {
+						element.style.backgroundColor = '#80FF80';
+					} else {
+						element.style.backgroundColor = '#FF8080';
+					}
+				}
+			}
+
+			function clear(node) {
+				while(node.firstChild) {
+					node.removeChild(node.firstChild);
+				}
+			}
+
+			let variant = getVariantFromParams(location.search);
+			if(variant >= 1 && variant <= 30) {
+				generateTask(variant);
+			} else {
+				let table = document.createElement('table');
+				for(let j = 1; j <= 10; j++) {
+					let row = document.createElement('tr');
+					for(let i = 1; i <= 3; i++) {
+						let cell = document.createElement('td');
+						cell.style.padding = '5px 25px 5px 10px';
+						let a = document.createElement('a');
+						const url = new URL(location.href);
+						url.searchParams.append('variant', `${(i - 1) * 10 + j}`);
+						a.href = url.href;
+						let text = document.createTextNode(`Вариант ${(i - 1) * 10 + j}`);
+						a.appendChild(text);
+						cell.appendChild(a);
+						row.appendChild(cell);
+					}
+					table.appendChild(row);
+				}
+				content.insertBefore(table, content.firstChild);
+			}
+			// ]]>
+		</script>
+	</body>
+</html>

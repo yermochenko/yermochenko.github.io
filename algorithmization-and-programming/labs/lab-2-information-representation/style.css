@@ -1,0 +1,22 @@
+table.bordered {
+	font-family: var(--font-famile-code);
+
+	tr:nth-child(odd) {
+		background: #D0D8E8;
+	}
+
+	tr:nth-child(even) {
+		background: #E9EDF4;
+	}
+
+	tr {
+		th {
+			background: #4F81BD;
+			color: white;
+		}
+
+		td {
+			text-align: center;
+		}
+	}
+}
