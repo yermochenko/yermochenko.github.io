@@ -1,0 +1,17 @@
+h3 {
+	margin-left: var(--padding-h);
+}
+
+.element {
+	margin-left: calc(var(--padding-h) * 2);
+	padding: 8px var(--padding-h);
+	height: var(--element-height);
+	line-height: var(--element-height);
+}
+
+.element img {
+	float: left;
+	margin-right: 8px;
+	width: var(--element-icon-width);
+	height: var(--element-icon-height);
+}
