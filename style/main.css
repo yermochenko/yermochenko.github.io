@@ -20,7 +20,6 @@
 }
 
 * {
-	font-size: var(--font-size-base);
 	color: var(--color-primary);
 }
 
@@ -31,6 +30,7 @@ html, body {
 }
 
 main, h1, h2, h3, p, li {
+	font-size: var(--font-size-base);
 	padding: var(--padding-v) var(--padding-h);
 	font-family: var(--font-family);
 }
