@@ -52,3 +52,7 @@ table.bordered {
 .answer input.incorrect {
 	background-color: #FFBEBE;
 }
+
+button {
+	height: 24px;
+}
