@@ -10,7 +10,7 @@
 	--color-header-nav-link-hover: #BEFFBE;
 
 	--font-family: Verdana, sans-serif;
-	--font-famile-code: Consolas, monospace;
+	--font-family-code: Consolas, monospace;
 	--font-size-base: 12pt;
 
 	--header-logo-width: 104px;
@@ -39,7 +39,7 @@ nav, main, h1, h2, h3, p, li {
 }
 
 code {
-	font-family: var(--font-famile-code);
+	font-family: var(--font-family-code);
 }
 
 header {
