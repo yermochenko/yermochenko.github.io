@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8">
+		<title>АиП: Эмулятор</title>
+		<script async src="/script/generator.js" type="module"></script>
+		<link rel="stylesheet" href="style.css">
+		<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+		<script src="script.js" type="module"></script>
+	</head>
+	<body>
+		<h2>Эмулятор процессора</h2>
+		<p>Дан эмулятор простейшего процессора.</p>
+		<div class="emulator">
+			<table class="emulator-container">
+				<tbody>
+					<tr>
+						<td class="state">
+							<div id="content"></div>
+						</td>
+						<td class="info">
+							<table class="bordered">
+								<tbody>
+									<tr>
+										<th>Код</th>
+										<th>Количество<br>операндов</th>
+										<th>Описание</th>
+										<th>Размер</th>
+									</tr>
+									<tr>
+										<td class="number"><code>19</code></td>
+										<td class="number">1</td>
+										<td><code><strong>push</strong> &lt;число&gt;</code></td>
+										<td class="number">2</td>
+									</tr>
+									<tr>
+										<td class="number"><code>21</code></td>
+										<td class="number">1</td>
+										<td><code><strong>push</strong> &lt;переменная&gt;</code></td>
+										<td class="number">2</td>
+									</tr>
+									<tr>
+										<td class="number"><code>23</code></td>
+										<td class="number">1</td>
+										<td><code><strong>pop</strong> &lt;переменная&gt;</code></td>
+										<td class="number">2</td>
+									</tr>
+									<tr>
+										<td class="number"><code>34</code></td>
+										<td class="number">0</td>
+										<td><code><strong>add</strong></code></td>
+										<td class="number">1</td>
+									</tr>
+									<tr>
+										<td class="number"><code>36</code></td>
+										<td class="number">0</td>
+										<td><code><strong>sub</strong></code></td>
+										<td class="number">1</td>
+									</tr>
+									<tr>
+										<td class="number"><code>38</code></td>
+										<td class="number">0</td>
+										<td><code><strong>mul</strong></code></td>
+										<td class="number">1</td>
+									</tr>
+									<tr>
+										<td class="number"><code>40</code></td>
+										<td class="number">0</td>
+										<td><code><strong>div</strong></code></td>
+										<td class="number">1</td>
+									</tr>
+									<tr>
+										<td class="number"><code>42</code></td>
+										<td class="number">0</td>
+										<td><code><strong>mod</strong></code></td>
+										<td class="number">1</td>
+									</tr>
+									<tr>
+										<td class="number"><code>50</code></td>
+										<td class="number">0</td>
+										<td><code><strong>and</strong></code></td>
+										<td class="number">1</td>
+									</tr>
+									<tr>
+										<td class="number"><code>52</code></td>
+										<td class="number">0</td>
+										<td><code><strong>or</strong></code></td>
+										<td class="number">1</td>
+									</tr>
+									<tr>
+										<td class="number"><code>54</code></td>
+										<td class="number">0</td>
+										<td><code><strong>not</strong></code></td>
+										<td class="number">1</td>
+									</tr>
+									<tr>
+										<td class="number"><code>56</code></td>
+										<td class="number">0</td>
+										<td><code><strong>equal</strong></code></td>
+										<td class="number">1</td>
+									</tr>
+									<tr>
+										<td class="number"><code>58</code></td>
+										<td class="number">0</td>
+										<td><code><strong>less</strong></code></td>
+										<td class="number">1</td>
+									</tr>
+									<tr>
+										<td class="number"><code>60</code></td>
+										<td class="number">0</td>
+										<td><code><strong>greater</strong></code></td>
+										<td class="number">1</td>
+									</tr>
+									<tr>
+										<td class="number"><code>64</code></td>
+										<td class="number">0</td>
+										<td><code><strong>stop</strong></code></td>
+										<td class="number">1</td>
+									</tr>
+									<tr>
+										<td class="number"><code>67</code></td>
+										<td class="number">1</td>
+										<td><code><strong>goto</strong></code></td>
+										<td class="number">2</td>
+									</tr>
+									<tr>
+										<td class="number"><code>71</code></td>
+										<td class="number">1</td>
+										<td><code><strong>goto-if-true</strong></code></td>
+										<td class="number">2</td>
+									</tr>
+									<tr>
+										<td class="number"><code>82</code></td>
+										<td class="number">0</td>
+										<td><code><strong>out</strong></code></td>
+										<td class="number">1</td>
+									</tr>
+									<tr>
+										<td class="number"><code>84</code></td>
+										<td class="number">0</td>
+										<td><code><strong>in</strong></code></td>
+										<td class="number">1</td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<h3>Устройство эмулятора</h3>
+		<p>Процессор имеет стек из 8-ми регистров, а также регистр IP (Instruction Pointer), который хранит адрес инструкии, которая должна быть выполнена следующей.</p>
+		<p>Память состоит из 128 ячеек.</p>
+		<h3>Набор инструкций процессора:</h3>
+		<table class="bordered">
+			<tbody>
+				<tr>
+					<th>Код инструкции</th>
+					<th>Количество операндов</th>
+					<th>Описание</th>
+					<th>Количество ячеек памяти, которое занимает инструкция</th>
+				</tr>
+				<tr>
+					<td class="number"><code>19</code></td>
+					<td class="number">1</td>
+					<td>копирует значение операнда в вершину стека регистров</td>
+					<td class="number">2</td>
+				</tr>
+				<tr>
+					<td class="number"><code>21</code></td>
+					<td class="number">1</td>
+					<td>считывает из памяти ячейку памяти с адресом, равным значению операнда,<br>затем прочитанное значение ячейки памяти копируется в вершину стека регистров</td>
+					<td class="number">2</td>
+				</tr>
+				<tr>
+					<td class="number"><code>23</code></td>
+					<td class="number">1</td>
+					<td>извлекает значение из вершины стека регистров,<br>затем копирует это значение в ячейку памяти с адресом, равным значению операнда</td>
+					<td class="number">2</td>
+				</tr>
+				<tr>
+					<td class="number"><code>34</code></td>
+					<td class="number">0</td>
+					<td>извлекает из вершины стека два числа:<br>сначала число, которое обозначим \(Y\),<br>затем число, которое обозначим \(X\),<br>затем вычисляется число \(Z = X + Y\),<br>затем число \(Z\) заносится в вершину стека регистров</td>
+					<td class="number">1</td>
+				</tr>
+				<tr>
+					<td class="number"><code>36</code></td>
+					<td class="number">0</td>
+					<td>извлекает из вершины стека два числа:<br>сначала число, которое обозначим \(Y\),<br>затем число, которое обозначим \(X\),<br>затем вычисляется число \(Z = X - Y\),<br>затем число \(Z\) заносится в вершину стека регистров</td>
+					<td class="number">1</td>
+				</tr>
+				<tr>
+					<td class="number"><code>38</code></td>
+					<td class="number">0</td>
+					<td>извлекает из вершины стека два числа:<br>сначала число, которое обозначим \(Y\),<br>затем число, которое обозначим \(X\),<br>затем вычисляется число \(Z = X \times Y\),<br>затем число \(Z\) заносится в вершину стека регистров</td>
+					<td class="number">1</td>
+				</tr>
+				<tr>
+					<td class="number"><code>40</code></td>
+					<td class="number">0</td>
+					<td>извлекает из вершины стека два числа:<br>сначала число, которое обозначим \(Y\),<br>затем число, которое обозначим \(X\),<br>затем вычисляется число \(Z = X / Y\),<br>затем число \(Z\) заносится в вершину стека регистров</td>
+					<td class="number">1</td>
+				</tr>
+				<tr>
+					<td class="number"><code>42</code></td>
+					<td class="number">0</td>
+					<td>извлекает из вершины стека два числа:<br>сначала число, которое обозначим \(Y\),<br>затем число, которое обозначим \(X\),<br>затем вычисляется число \(Z = X \bmod Y\),<br>затем число \(Z\) заносится в вершину стека регистров</td>
+					<td class="number">1</td>
+				</tr>
+				<tr>
+					<td class="number"><code>50</code></td>
+					<td class="number">0</td>
+					<td>извлекает из вершины стека два числа:<br>сначала число, которое обозначим \(Y\),<br>затем число, которое обозначим \(X\),<br>затем вычисляется число \(Z = X \land Y\) (оператор логического <code>И</code>),<br>затем число \(Z\) заносится в вершину стека регистров</td>
+					<td class="number">1</td>
+				</tr>
+				<tr>
+					<td class="number"><code>52</code></td>
+					<td class="number">0</td>
+					<td>извлекает из вершины стека два числа:<br>сначала число, которое обозначим \(Y\),<br>затем число, которое обозначим \(X\),<br>затем вычисляется число \(Z = X \lor Y\) (оператор логического <code>ИЛИ</code>),<br>затем число \(Z\) заносится в вершину стека регистров</td>
+					<td class="number">1</td>
+				</tr>
+				<tr>
+					<td class="number"><code>54</code></td>
+					<td class="number">0</td>
+					<td>извлекает из вершины стека число, которое обозначим \(X\),<br>затем вычисляется число \(Y = \lnot X\) (оператор логического <code>НЕ</code>),<br>затем число \(Y\) заносится в вершину стека регистров</td>
+					<td class="number">1</td>
+				</tr>
+				<tr>
+					<td class="number"><code>56</code></td>
+					<td class="number">0</td>
+					<td>извлекает из вершины стека два числа:<br>сначала число, которое обозначим \(Y\),<br>затем число, которое обозначим \(X\),<br>затем если \(X=Y\), то в вершину стека регистров заносится число \(1\), иначе в вершину стека регистров заносится число \(0\)</td>
+					<td class="number">1</td>
+				</tr>
+				<tr>
+					<td class="number"><code>58</code></td>
+					<td class="number">0</td>
+					<td>извлекает из вершины стека два числа:<br>сначала число, которое обозначим \(Y\),<br>затем число, которое обозначим \(X\),<br>затем если \(X&lt;Y\), то в вершину стека регистров заносится число \(1\), иначе в вершину стека регистров заносится число \(0\)</td>
+					<td class="number">1</td>
+				</tr>
+				<tr>
+					<td class="number"><code>60</code></td>
+					<td class="number">0</td>
+					<td>извлекает из вершины стека два числа:<br>сначала число, которое обозначим \(Y\),<br>затем число, которое обозначим \(X\),<br>затем если \(X&gt;Y\), то в вершину стека регистров заносится число \(1\), иначе в вершину стека регистров заносится число \(0\)</td>
+					<td class="number">1</td>
+				</tr>
+				<tr>
+					<td class="number"><code>64</code></td>
+					<td class="number">0</td>
+					<td>останавливает выполнение программы: заносит в регистр <code>IP</code> значение <code>0</code>.</td>
+					<td class="number">1</td>
+				</tr>
+				<tr>
+					<td class="number"><code>67</code></td>
+					<td class="number">1</td>
+					<td>переходит к выполнению инструкции с адресом, равным значению операнда: заносит в регистр <code>IP</code> значение операнда.</td>
+					<td class="number">2</td>
+				</tr>
+				<tr>
+					<td class="number"><code>71</code></td>
+					<td class="number">1</td>
+					<td>извлекает из вершины стека регистров значение, и если это значение равное <code>ИСТИНА</code>, то переходит к выполнению инструкции с адресом, равным значению операнда: заносит в регистр <code>IP</code> значение операнда.</td>
+					<td class="number">2</td>
+				</tr>
+				<tr>
+					<td class="number"><code>82</code></td>
+					<td class="number">0</td>
+					<td>извлекает из вершины стека регистров значение и выводит его пользователю.</td>
+					<td class="number">1</td>
+				</tr>
+				<tr>
+					<td class="number"><code>84</code></td>
+					<td class="number">0</td>
+					<td>запрашивает у пользователя число и введённое число заносит в вершину стека регистров.</td>
+					<td class="number">1</td>
+				</tr>
+			</tbody>
+		</table>
+		<p>При работе с логическими значениями (инструкции с кодами 50, 52, 54, 77) число считается равным значению ИСТИНА, если оно не равно 0; и равным значению ЛОЖЬ, если число равно 0.</p>
+		<p>Таблица истинности логических операций:</p>
+		<table class="bordered">
+			<tbody>
+				<tr>
+					<th>\(A\)</th>
+					<th>\(B\)</th>
+					<th>\(A \land B\)</th>
+					<th>\(A \lor B\)</th>
+					<th>\(\lnot A\)</th>
+				</tr>
+				<tr>
+					<td class="number false">ЛОЖЬ</td>
+					<td class="number false">ЛОЖЬ</td>
+					<td class="number false">ЛОЖЬ</td>
+					<td class="number false">ЛОЖЬ</td>
+					<td class="number true">ИСТИНА</td>
+				</tr>
+				<tr>
+					<td class="number true">ИСТИНА</td>
+					<td class="number false">ЛОЖЬ</td>
+					<td class="number false">ЛОЖЬ</td>
+					<td class="number true">ИСТИНА</td>
+					<td class="number false">ЛОЖЬ</td>
+				</tr>
+				<tr>
+					<td class="number false">ЛОЖЬ</td>
+					<td class="number true">ИСТИНА</td>
+					<td class="number false">ЛОЖЬ</td>
+					<td class="number true">ИСТИНА</td>
+					<td class="number"> </td>
+				</tr>
+				<tr>
+					<td class="number true">ИСТИНА</td>
+					<td class="number true">ИСТИНА</td>
+					<td class="number true">ИСТИНА</td>
+					<td class="number true">ИСТИНА</td>
+					<td class="number"> </td>
+				</tr>
+			</tbody>
+		</table>
+		<h3>Формат программы:</h3>
+		<p>Первая ячейка памяти (с адресом 0) содержит адрес инструкции, которая должна быть выполнена первой. Между первой ячейкой памяти и ячейкой памяти с первой инструкцией могут быть размещены переменные.</p>
+		<h3>Алгоритм работы процессора:</h3>
+		<ol>
+			<li>Процессор копирует значение ячейки памяти с адресом 0 в регистр IP и начинает выполнять инструкции.</li>
+			<li>Процессор читает ячейку памяти с адресом, равным значению регистра IP. Эта ячейка интерпретируется как код инструкции.</li>
+			<li>Процессор увеличивает значение регистра IP на число, равное размеру инструкции с прочитанным кодом.</li>
+			<li>Процессор выполняет инструкцию с прочитанным кодом.</li>
+			<li>Процессор повторяет пункт 2 до тех пор, пока значение регистра IP не станет равным 0.</li>
+		</ol>
+	</body>
+</html>

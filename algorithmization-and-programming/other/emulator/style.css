@@ -1,0 +1,188 @@
+.bordered {
+	th, td {
+		vertical-align: top;
+	}
+
+	.number {
+		text-align: center;
+
+		code {
+			font-weight: bold;
+			color: blue;
+		}
+	}
+
+	.true {
+		color: #005600;
+	}
+
+	.false {
+		color: #560000;
+	}
+}
+
+.emulator {
+	background: #BEFFBE;
+	padding: 16px;
+	border: 1px solid black;
+	display: table-cell;
+
+	.emulator-container {
+		background: white;
+		border: 1px solid black;
+
+		.state, .info {
+			text-align: left;
+			vertical-align: top;
+			padding: 16px;
+		}
+	}
+}
+
+.device-state {
+	text-align: center;
+	vertical-align: top;
+	padding: 0 8px;
+}
+
+.ram {
+	border-collapse: collapse;
+	border: 3px solid black;
+
+	th {
+		background: dodgerblue;
+		color: white;
+		border: 3px solid black;
+		padding: 2px 8px;
+	}
+
+	th:nth-child(odd) {
+		border-right-width: 1px;
+		width: 60px;
+	}
+
+	th:nth-child(even) {
+		border-left-width: 1px;
+		width: 100px;
+	}
+
+	td {
+		font-family: 'Consolas', monospace;
+		border: 1px solid black;
+		padding: 2px 8px;
+	}
+
+	td:nth-child(odd) {
+		border-left-width: 3px;
+		background: #DDD;
+		color: #666;
+		text-align: right;
+	}
+
+	td:nth-child(even) {
+		border-right-width: 3px;
+		font-weight: bold;
+	}
+
+	td.selected:nth-child(odd) {
+		color: red;
+	}
+
+	td.selected:nth-child(even) {
+		background: lightcoral;
+	}
+
+	input {
+		width: 100%;
+		border: none;
+		font-family: 'Consolas', monospace;
+		font-size: 100%;
+		font-weight: bold;
+		color: red;
+		padding: 0;
+		margin: 0;
+	}
+
+	input:focus {
+		outline: none;
+	}
+}
+
+.registers-stack {
+	border-collapse: collapse;
+	border-left: 3px solid black;
+	border-right: 3px solid black;
+	border-bottom: 3px solid black;
+	margin-bottom: 16px;
+
+	td {
+		border: 1px solid black;
+		padding: 2px 8px;
+		width: 100px;
+		font-family: 'Consolas', monospace;
+		font-weight: bold;
+	}
+
+	td.top {
+		background: lightcoral;
+	}
+}
+
+.ip {
+	border-collapse: collapse;
+	border: 3px solid black;
+
+	td {
+		padding: 2px 8px;
+		width: 100px;
+		font-family: 'Consolas', monospace;
+		font-weight: bold;
+	}
+}
+
+.caption {
+	background: dodgerblue;
+	color: white;
+	margin: 0 0 8px 0;
+	padding: 4px 8px;
+}
+
+.controls {
+	margin: 16px 12px 0 12px;
+}
+
+.button {
+	padding: 4px 16px;
+	margin: 0 16px 16px 0;
+	cursor: pointer;
+	border: 1px solid gray;
+	border-radius: 4px;
+	background: white;
+	color: black;
+	font-size: 14px;
+}
+
+.button-run {
+	background: #0BF;
+	border: #09D;
+}
+
+.button-next {
+	background: #0FB;
+	border: #0D9;
+}
+
+.button-stop {
+	background: #F0B;
+	border: #D09;
+}
+
+.button-io {
+	background-color: #FB0;
+	border: #D90;
+}
+
+.button[disabled] {
+	background: lightgray;
+	color: darkgray;
+}

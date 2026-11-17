@@ -13,6 +13,14 @@ export default {
 			title: 'Упражнение №2. Представление информации в памяти компьютера',
 			abbr: 'Упражнение №2',
 			url: '/algorithmization-and-programming/labs/lab-2-information-representation/index.html'
+		}, {
+			title: 'Упражнение №3. Эмулятор процессора',
+			abbr: 'Упражнение №3',
+			url: '/algorithmization-and-programming/labs/lab-3-emulator/index.html'
+		}, {
+			title: 'Эмулятор процессора',
+			abbr: 'Эмулятор',
+			url: '/algorithmization-and-programming/other/emulator/index.html'
 		}]
 	}]
 };

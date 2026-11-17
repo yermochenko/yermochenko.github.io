@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8">
+		<title>АиП: Упражнение №3</title>
+		<script async src="/script/generator.js" type="module"></script>
+		<link rel="stylesheet" href="style.css">
+		<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+	</head>
+	<body>
+		<h2>Упражнение №3. Эмулятор процессора</h2>
+		<p>Дан <a href="../../other/emulator/index.html" target="_blank" rel="noopener">эмулятор простейшего процессора</a>. С его использованием выполнить следующие задания.</p>
+		<h3>Задание 1</h3>
+		<p>Написать для представленного эмулятора программу, запрашивающую у пользователя значения трёх переменных \(x\), \(y\) и \(z\), затем вычисляющую значение выражений, соответствующих вашему варианту (выражения не преобразовывать), и выводящих пользователю значения вычисленных переменных \(a\), \(b\) и \(c\).</p>
+		<p><strong>Варианты</strong>:</p>
+		<ol class="narrow">
+			<li>
+				\[a=\frac{x+y\times z}{x-5}\]
+				\[b=x-\frac{y}{z+2\times z}\]
+				\[c=a^6+b^7\]
+			</li>
+			<li>
+				\[a=\frac{x\times y}{z+y-3}\]
+				\[b=\frac{x}{y+z-3\times y}\]
+				\[c=a^7+b^6\]
+			</li>
+			<li>
+				\[a=x-\frac{y+z\times z}{7}\]
+				\[b=x-\left(y+\frac{z}{5\times x}\right)\]
+				\[c=a^9+b^6\]
+			</li>
+			<li>
+				\[a=x-\frac{y\times z}{x+2}\]
+				\[b=x+y-\frac{z}{2\times z}\]
+				\[c=a^6+b^9\]
+			</li>
+			<li>
+				\[a=x\times y-\frac{z}{y+3}\]
+				\[b=\frac{x}{y-z\times \left(y+7\right)}\]
+				\[c=a^9+b^{10}\]
+			</li>
+			<li>
+				\[a=x-y\times z+\frac{z}{5}\]
+				\[b=x-\frac{y}{z\times \left(x+3\right)}\]
+				\[c=a^7+b^9\]
+			</li>
+			<li>
+				\[a=\frac{x\times y-z}{x}+7\]
+				\[b=\frac{x}{y\times\left(z-\left(z+5\right)\right)}\]
+				\[c=a^6+b^{10}\]
+			</li>
+			<li>
+				\[a=x\times y-\left(z+\frac{y}{2}\right)\]
+				\[b=x\times \frac{y}{z-\left(y+2\right)}\]
+				\[c=a^{10}+b^6\]
+			</li>
+			<li>
+				\[a=\frac{x-\left(y+z\right)\times z}{7}\]
+				\[b=x-y\times \frac{z}{x+5}\]
+				\[c=a^9+b^7\]
+			</li>
+			<li>
+				\[a=x\times\frac{y+z}{x-3}\]
+				\[b=x\times \left(y-\frac{z}{z+7}\right)\]
+				\[c=a^7+b^{10}\]
+			</li>
+			<li>
+				\[a=\left(x+y\right)\times \frac{z}{y-5}\]
+				\[b=x+y-z\times \frac{y}{3}\]
+				\[c=a^{10}+b^7\]
+			</li>
+			<li>
+				\[a=x-y\times \frac{z}{z+2}\]
+				\[b=x-y\times \left(z+\frac{x}{7}\right)\]
+				\[c=a^{10}+b^9\]
+			</li>
+		</ol>
+		<p><em>Указание</em>: рекомендуется ознакомится с <a href="https://ru.wikipedia.org/wiki/Обратная_польская_запись" target="_blank" rel="noopener">обратной польской записью</a> выражений для более удобного составления программы.</p>
+		<h3>Задание 2</h3>
+		<p>Написать для представленного эмулятора программу, запрашивающую у пользователя значения двух переменных \(x\) и \(y\) — координат некоторой точки на плоскости. Также на плоскости определено две области: область \(A\), ограниченная 1-ой и 2-ой кривой, и область \(B\), ограниченная 1-ой и 3-ей кривой. Уравнения кривых см. в своём варианте. Программа должна выводить значение <code>1</code> в случае, если точка лежит в одной из двух областей \(A\) или \(B\), и <code>0</code> в ином случае.</p>
+		<p><strong>Варианты</strong>:</p>
+		<ol class="narrow">
+			<li>
+				<table class="bordered">
+					<tbody>
+						<tr>
+							<th>Кривая №1</th>
+							<th>Кривая №2</th>
+							<th>Кривая №3</th>
+						</tr>
+						<tr>
+							<td>\[\frac{x^2}{a^2}+\frac{y^2}{b^2}=1\]</td>
+							<td>\[y=\left(c\times x\right)^2+\frac{b}{2}\]</td>
+							<td>\[y=k\times x-\frac{b}{2}\]</td>
+						</tr>
+						<tr>
+							<td>внутри эллипса</td>
+							<td>выше кривой</td>
+							<td>ниже прямой</td>
+						</tr>
+					</tbody>
+				</table>
+				<p>где: \(a\in\left(0;10\right]\), \(b\in\left(0;10\right]\), \(c\in\left[\frac{1}{2};2\right]\), \(k\in\left[-2;2\right]\)</p>
+			</li>
+			<li>
+				<table class="bordered">
+					<tbody>
+						<tr>
+							<th>Кривая №1</th>
+							<th>Кривая №2</th>
+							<th>Кривая №3</th>
+						</tr>
+						<tr>
+							<td>\[a\times x^2+y^2=R^2\]</td>
+							<td>\[\frac{y^2}{\left(R-\frac{1}{a+1}\right)^2}-\frac{x^2}{\left(R+\frac{1}{a+1}\right)^2}=1\]</td>
+							<td>\[x^3+\left(y+\frac{1}{a}\right)^3=R^2\]</td>
+						</tr>
+						<tr>
+							<td>внутри эллипса</td>
+							<td>выше верхней ветви гиперболы</td>
+							<td>ниже кривой</td>
+						</tr>
+					</tbody>
+				</table>
+				<p>где: \(R\in\left[1;10\right]\), \(a\in\left[1;10\right]\)</p>
+			</li>
+			<li>
+				<table class="bordered">
+					<tbody>
+						<tr>
+							<th>Кривая №1</th>
+							<th>Кривая №2</th>
+							<th>Кривая №3</th>
+						</tr>
+						<tr>
+							<td>\[y=-c\times x^2+\frac{b}{2}\]</td>
+							<td>\[y=\frac{\left(x+\frac{a}{4}\right)^2-a^2}{x^2+a^2}-b\]</td>
+							<td>\[y=k\times x-b\]</td>
+						</tr>
+						<tr>
+							<td>ниже параболы</td>
+							<td>выше кривой</td>
+							<td>выше прямой</td>
+						</tr>
+					</tbody>
+				</table>
+				<p>где: \(a\in\left[1;10\right]\), \(b\in\left[1;10\right]\), \(c\in\left[\frac{1}{2};2\right]\), \(k\in\left[-1;1\right]\)</p>
+			</li>
+			<li>
+				<table class="bordered">
+					<tbody>
+						<tr>
+							<th>Кривая №1</th>
+							<th>Кривая №2</th>
+							<th>Кривая №3</th>
+						</tr>
+						<tr>
+							<td>\[\frac{\left(x-a\right)^2}{a^2}+\frac{y^2}{c^2}=1\]</td>
+							<td>\[\frac{x^2}{a^2}-\frac{y^2}{a^2}=1\]</td>
+							<td>\[y=k\times x\]</td>
+						</tr>
+						<tr>
+							<td>внутри эллипса</td>
+							<td>правее кривой</td>
+							<td>ниже прямой</td>
+						</tr>
+					</tbody>
+				</table>
+				<p>где: \(a\in\left(0;10\right]\), \(b\in\left(0;10\right]\), \(c\in\left(0;10\right]\), \(k\in\left[-1;1\right]\)</p>
+			</li>
+			<li>
+				<table class="bordered">
+					<tbody>
+						<tr>
+							<th>Кривая №1</th>
+							<th>Кривая №2</th>
+							<th>Кривая №3</th>
+						</tr>
+						<tr>
+							<td>\[a^2-x^2=\left(\frac{a}{b}\times y\right)^2\]</td>
+							<td>\[y=\frac{2\times b}{5}-\left(x-\frac{2\times a}{3}\right)^2\]</td>
+							<td>\[\left(x+\frac{3\times a}{4}\right)^2\times\left(x+\frac{7\times a}{12}\right)+\frac{b}{3}\]</td>
+						</tr>
+						<tr>
+							<td>внутри эллипса</td>
+							<td>ниже параболы</td>
+							<td>выше кривой</td>
+						</tr>
+					</tbody>
+				</table>
+				<p>где: \(a\in\left[1;10\right]\), \(b\in\left[1;10\right]\)</p>
+			</li>
+			<li>
+				<table class="bordered">
+					<tbody>
+						<tr>
+							<th>Кривая №1</th>
+							<th>Кривая №2</th>
+							<th>Кривая №3</th>
+						</tr>
+						<tr>
+							<td>\[\frac{x^2}{a^2}+\frac{y^2}{b^2}=1\]</td>
+							<td>\[y=\frac{k\times x+b}{k+2}\]</td>
+							<td>\[y=\frac{b}{\left(x-\frac{a}{2}\right)^2+1}-\frac{b}{2}\]</td>
+						</tr>
+						<tr>
+							<td>внутри эллипса</td>
+							<td>выше прямой</td>
+							<td>ниже кривой</td>
+						</tr>
+					</tbody>
+				</table>
+				<p>где: \(a\in\left[1;10\right]\), \(b\in\left[1;10\right]\), \(k\in\left[-1;1\right]\)</p>
+			</li>
+			<li>
+				<table class="bordered">
+					<tbody>
+						<tr>
+							<th>Кривая №1</th>
+							<th>Кривая №2</th>
+							<th>Кривая №3</th>
+						</tr>
+						<tr>
+							<td>\[y=\left(c\times x-\frac{a}{2}\right)^2-3\times b\]</td>
+							<td>\[\frac{y^2}{b^2}-\frac{x^2}{a^2}=1\]</td>
+							<td>\[y=k\times x + a\times b\]</td>
+						</tr>
+						<tr>
+							<td>выше параболы</td>
+							<td>между ветвями гиперболы</td>
+							<td>ниже прямой</td>
+						</tr>
+					</tbody>
+				</table>
+				<p>где: \(a\in\left[1;10\right]\), \(b\in\left[1;10\right]\), \(c\in\left[\frac{1}{2};2\right]\), \(k\in\left[-1;1\right]\)</p>
+			</li>
+			<li>
+				<table class="bordered">
+					<tbody>
+						<tr>
+							<th>Кривая №1</th>
+							<th>Кривая №2</th>
+							<th>Кривая №3</th>
+						</tr>
+						<tr>
+							<td>\[x^2+a\times y^2=R^2\]</td>
+							<td>\[y=\frac{a}{R}\times\left(x+\frac{R}{\sqrt{a}}\right)^2\]</td>
+							<td>\[y=\frac{R^2}{a\times\left(x^2+R\right)}-\frac{R}{\sqrt{a}}\]</td>
+						</tr>
+						<tr>
+							<td>внутри эллипса</td>
+							<td>выше параболы</td>
+							<td>ниже кривой</td>
+						</tr>
+				</tbody>
+					</table>
+				<p>где: \(R\in\left[1;10\right]\), \(a\in\left[1;10\right]\)</p>
+			</li>
+			<li>
+				<table class="bordered">
+					<tbody>
+						<tr>
+							<th>Кривая №1</th>
+							<th>Кривая №2</th>
+							<th>Кривая №3</th>
+						</tr>
+						<tr>
+							<td>\[\frac{y^2}{b^2}-\frac{x^2}{a^2}=1\]</td>
+							<td>\[\frac{x^3}{a^2+1}-\left(b+3\right)\times\left(y-b-3\right)^3=1\]</td>
+							<td>\[y=k\times x-3\times b\]</td>
+						</tr>
+						<tr>
+							<td>выше верхней ветви (для области \(A\))<br>ниже нижней ветви (для области \(B\))</td>
+							<td>ниже кривой</td>
+							<td>выше прямой</td>
+						</tr>
+					</tbody>
+				</table>
+				<p>где: \(a\in\left[2;10\right]\), \(b\in\left[2;10\right]\), \(k\in\left[-\frac{1}{3};\frac{1}{3}\right]\)</p>
+			</li>
+			<li>
+				<table class="bordered">
+					<tbody>
+						<tr>
+							<th>Кривая №1</th>
+							<th>Кривая №2</th>
+							<th>Кривая №3</th>
+						</tr>
+						<tr>
+							<td>\[\frac{x^2}{a^2}+\frac{y^2}{b^2}=1\]</td>
+							<td>\[y=\frac{2\times b}{3}-\left(c\times x\right)^2\]</td>
+							<td>\[\frac{5\times x^2}{a^2}-\frac{3\times y^2}{b^2}=1\]</td>
+						</tr>
+						<tr>
+							<td>внутри эллипса</td>
+							<td>ниже параболы</td>
+							<td>снаружи гиперболы</td>
+						</tr>
+					</tbody>
+				</table>
+				<p>где: \(a\in\left[1;10\right]\), \(b\in\left[1;10\right]\), \(с\in\left[\frac{1}{3};2\right]\)</p>
+			</li>
+			<li>
+				<table class="bordered">
+					<tbody>
+						<tr>
+							<th>Кривая №1</th>
+							<th>Кривая №2</th>
+							<th>Кривая №3</th>
+						</tr>
+						<tr>
+							<td>\[\frac{x^2}{a^2}+\frac{y^2}{b^2}=1\]</td>
+							<td>\[y=k\times x+\frac{3\times b}{4}\]</td>
+							<td>\[y=\left(x-\frac{a}{3}\right)^3-x+\frac{b}{3}\]</td>
+						</tr>
+						<tr>
+							<td>внутри эллипса</td>
+							<td>выше прямой</td>
+							<td>ниже кривой</td>
+						</tr>
+					</tbody>
+				</table>
+				<p>где: \(a\in\left(0;10\right]\), \(b\in\left(0;10\right]\), \(k\in\left[-1;1\right]\)</p>
+			</li>
+			<li>
+				<table class="bordered">
+					<tbody>
+						<tr>
+							<th>Кривая №1</th>
+							<th>Кривая №2</th>
+							<th>Кривая №3</th>
+						</tr>
+						<tr>
+							<td>\[\frac{x^2}{a^2}+\frac{\left(y-b\right)^2}{b^2}=1\]</td>
+							<td>\[\frac{y^2}{b^2}-\frac{\left(x-\frac{a}{2}\right)^2}{a^2}=1\]</td>
+							<td>\[y=\frac{\left(x-\frac{a}{2}\right)^2-a^2}{x^2+b^2}+\frac{b}{2}\]</td>
+						</tr>
+						<tr>
+							<td>внутри эллипса</td>
+							<td>выше верхней ветви гиперболы</td>
+							<td>ниже кривой</td>
+						</tr>
+					</tbody>
+				</table>
+				<p>где: \(a\in\left[1;10\right]\), \(b\in\left[1;10\right]\)</p>
+			</li>
+		</ol>
+	</body>
+</html>
