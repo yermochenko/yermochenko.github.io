@@ -126,8 +126,11 @@ window.addEventListener('load', function() {
 });
 
 window.addEventListener('message', function(event) {
+	console.log('IFRAME');
+	console.log(event);
 	if(event.data?.type === 'request-height') {
 		const h = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+		console.log(`IFRAME HEIGHT = ${h}`);
 		window.parent.postMessage({ type: 'height', height: h }, 'https://newsdo.vsu.by');
 	}
 });
