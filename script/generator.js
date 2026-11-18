@@ -124,3 +124,10 @@ window.addEventListener('load', function() {
 	body.appendChild(header());
 	body.appendChild(main);
 });
+
+window.addEventListener('message', function(event) {
+	if(event.data?.type === 'request-height') {
+		const h = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+		window.parent.postMessage({ type: 'height', height: h }, 'https://newsdo.vsu.by');
+	}
+});
