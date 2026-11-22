@@ -22,5 +22,9 @@ export default {
 			abbr: 'Эмулятор',
 			url: '/algorithmization-and-programming/other/emulator/index.html'
 		}]
+	}, {
+		title: 'Языки программирования C/C++ (базовый уровень)',
+		abbr: 'C/C++[B]',
+		url: '/c-and-c++/index.html'
 	}]
 };

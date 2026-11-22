@@ -1,8 +1,4 @@
 .bordered {
-	th, td {
-		vertical-align: top;
-	}
-
 	.number {
 		text-align: center;
 

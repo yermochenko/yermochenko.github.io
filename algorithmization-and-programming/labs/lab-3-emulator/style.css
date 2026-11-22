@@ -14,10 +14,6 @@ code {
 }
 
 .bordered {
-	th, td {
-		vertical-align: top;
-	}
-
 	tr:nth-child(3) td {
 		text-align: center;
 		font-style: italic;

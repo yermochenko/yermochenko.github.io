@@ -1,6 +1,7 @@
 :root {
 	--padding-h: 16px;
 	--padding-v: 0;
+	--line-spacing: 1.5;
 
 	--color-primary: #445056;
 	--color-secondary: #565656;
@@ -36,6 +37,10 @@ nav, main, h1, h2, h3, p, li {
 	font-size: var(--font-size-base);
 	padding: var(--padding-v) var(--padding-h);
 	font-family: var(--font-family);
+}
+
+p, li {
+	line-height: var(--line-spacing);
 }
 
 code {
@@ -97,5 +102,6 @@ table.bordered {
 	td, th {
 		border: 1px solid var(--color-primary);
 		padding: var(--table-cell-padding-v) var(--table-cell-padding-h);
+		vertical-align: top;
 	}
 }
