@@ -30,6 +30,10 @@ export default {
 			title: 'Упражнение №1. Линейные алгоритмы',
 			abbr: 'Упражнение №1',
 			url: '/c-and-c++/labs/lab-1-linear-algorithms/index.html'
+		}, {
+			title: 'Упражнение №2. Разветвляющиеся алгоритмы',
+			abbr: 'Упражнение №2',
+			url: '/c-and-c++/labs/lab-2-branching-algorithms/index.html'
 		}]
 	}]
 };
