@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8">
+		<title>C/C++[B]: Упражнение №1</title>
+		<script async src="/script/generator.js" type="module"></script>
+		<link rel="stylesheet" href="../style.css">
+		<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+	</head>
+	<body>
+		<h2>Упражнение №1. Линейные алгоритмы</h2>
+		<h3>Задание 1</h3>
+		<p>Написать программу, вычисляющую значения выражений в соответствии с заданием 1 <a href="/algorithmization-and-programming/labs/lab-3-emulator/index.html" target="_blank" rel="noopener">упражнения по работе с эмулятором процессора</a>.</p>
+		<h3>Задание 2</h3>
+		<p>Написать программу, вычисляющую значения выражения согласно варианта.</p>
+		<p><strong>Вариант</strong>:</p>
+		<ol class="narrow">
+			<li>\[\sqrt{x}+\frac{\sin{y}}{\ln{z}};\]</li>
+			<li>\[\sqrt[3]{x}+\frac{\log{}_{10}{y}}{\cos{z}};\]</li>
+			<li>\[\frac{\mathop{\rm tg}\nolimits{y}}{\sqrt{x}}-\log{}_2{z};\]</li>
+			<li>\[\sqrt[3]{x}\times\sin{y}-e^{z+1};\]</li>
+			<li>\[\frac{\sqrt{x}+\cos{y}}{\ln{z}};\]</li>
+			<li>\[\frac{\sqrt[3]{x}\times\mathop{\rm tg}\nolimits{y}}{\log{}_{10}{z}};\]</li>
+			<li>\[\frac{\sqrt{x}}{\sin{y}\times e^z};\]</li>
+			<li>\[\sqrt{x}\times\cos{y}+\log{}_2{z};\]</li>
+			<li>\[\frac{\sqrt[3]{x}}{\mathop{\rm tg}\nolimits{y}+\log{}_{10}{z}};\]</li>
+			<li>\[\sqrt{x}+\sin{\frac{y}{\ln{z}}};\]</li>
+			<li>\[\sqrt[3]{\frac{\cos{x}}{y}}-e^{-z};\]</li>
+			<li>\[\sqrt{\frac{x}{\mathop{\rm tg}\nolimits{y}+2}}+\log{}_2{\frac{1}{z+1}}.\]</li>
+		</ol>
+		<h3>Задание 3</h3>
+		<p>Написать программу, решающую предложенную задачу на движение согласно варианта.</p>
+		<p><strong>Вариант</strong>:</p>
+		<ol>
+			<li>Скорость движения теплохода относительно берега вниз по реке \(v_d\)&nbsp;км/ч, а вверх&nbsp;&mdash; \(v_u\)&nbsp;км/ч. Определите скорость течения относительно берега и скорость теплохода относительно воды.</li>
+			<li>Автоколонна длиной \(s\)&nbsp;м движется со скоростью \(v_c\)&nbsp;км/ч. Мотоциклист выезжает из головы колонны, доезжает до ее хвоста и возвращается обратно. Определите время, за которое мотоциклист преодолеет данное расстояние, если его скорость равна \(v_b\)&nbsp;км/ч.</li>
+			<li>Пловец, двигаясь относительно воды перпендикулярно течению со скоростью \(v_s\)&nbsp;км/ч, переплывает реку шириной \(w\)&nbsp;м. Скорость течения реки \(v_r\)&nbsp;км/ч. Определите скорость и смещение (в метрках) пловца относительно берега.</li>
+			<li>Вертолет летел в безветренную погоду на север со скоростью \(v_h\)&nbsp;м/с. С какой скоростью и под каким углом к первоначальному направлению будет лететь вертолет, если подует западный ветер со скоростью \(v_w\)&nbsp;м/с?</li>
+			<li>На катере необходимо переплыть реку перпендикулярно берега. Какую скорость должен сообщить мотор катеру, чтобы при скорости течения реки, равной \(v_r\)&nbsp;м/с, катер двигался относительно берега со скоростью \(v_b\)&nbsp;м/с?</li>
+			<li>Пловец желает переплыть реку перпендикулярно берега. Под каким углом к течению он должен плыть, если скорость пловца относительно воды \(v_s\)&nbsp;м/с, скорость течения \(v_r\)&nbsp;м/с?</li>
+			<li>Скорость течения реки \(v_r\)&nbsp;км/ч, ширина ее \(w\)&nbsp;м. С какой скоростью относительно берега должен плыть пловец, чтобы переплыть реку за \(t\)&nbsp;мин, если его скорость относительно воды перпендикулярна берегу?</li>
+			<li>По двум взаимно перпендикулярным дорогам движутся равномерно грузовая и легковая машины со скоростями \(v_1\)&nbsp;км/ч и \(v_2\)&nbsp;км/ч соответственно. На каком расстоянии окажутся друг от друга машины через \(t\)&nbsp;мин после встречи у перекрестка?</li>
+			<li>В безветренную погоду вертолет двигался со скоростью \(v_h\)&nbsp;км/ч точно на север. Найдите скорость вертолета, если подул северо-западный ветер под углом 45° к направлению движения. Скорость ветра \(v_w\)&nbsp;м/с.</li>
+			<li>Наблюдатель на берегу определил значение скорости пловца, переплывающего реку&nbsp;&mdash; \(v_s\)&nbsp;м/с. Скорость была направлена под углом 60° к линии берега. Какова скорость пловца относительно воды, если скорость течения реки \(v_r\)&nbsp;м/с?</li>
+			<li>По двум пересекающимся под углом 60° дорогам движутся два автомобиля со скоростями \(v_1\)&nbsp;км/ч и \(v_2\)&nbsp;км/ч соответственно. Через какое время после встречи у перекрестка расстояние между ними станет равным \(s\)&nbsp;км?</li>
+			<li>Пловец, двигаясь относительно воды перпендикулярно течению со скоростью \(v_s\)&nbsp;км/ч, переплывает реку шириной \(w\)&nbsp;м. Скорость течения реки \(v_r\)&nbsp;км/ч. Определите время, которое требуется пловцу, чтобы переплыть реку, и под каким углом к берегу плывет пловец.</li>
+		</ol>
+		<p><em>Указания</em></p>
+		<p class="example">Пример 1</p>
+		<p>Пример программы, вычисляющей простейшее арифметическое выражение:</p>
+		<pre class="narrow"><code class="language-cpp" data-line-numbers="">#include &lt;cstdio&gt;
+
+int main()
+{
+    printf("x = ");
+    double x;
+    scanf_s("%lf", &amp;x);
+
+    printf("y = ");
+    double y;
+    scanf_s("%lf", &amp;y);
+
+    double z = x * x + y * y;
+
+    printf("%.2lf^2 + %.2lf^2 = %.2lf\n", x, y, z);
+
+    return 0;
+}
+		</code></pre>
+		<p class="example">Пояснения к примеру:</p>
+		<p>При объявлении переменных можно использовать следующие типы данных:</p>
+		<table class="bordered">
+			<tbody>
+				<tr>
+					<th>Тип данных</th>
+					<th>Размер (в байтах)</th>
+					<th>Описание</th>
+				</tr>
+				<tr>
+					<td colspan="3">Целые числа</td>
+				</tr>
+				<tr>
+					<td><code class="code type">char</code></td>
+					<td>1</td>
+					<td>Целое знаковое число в диапазоне \(\left[-128;127\right]\) или символ (в зависимости от контекста использования переменной)</td>
+				</tr>
+				<tr>
+					<td><code class="code type">unsigned&nbsp;char</code></td>
+					<td>1</td>
+					<td>Целое беззнаковое число в диапазоне \(\left[0;255\right]\) или символ (в зависимости от контекста использования переменной)</td>
+				</tr>
+				<tr>
+					<td><code class="code type">short&nbsp;int</code></td>
+					<td>2</td>
+					<td>Целое знаковое число в диапазоне \(\left[-32\,768;32\,767\right]\)</td>
+				</tr>
+				<tr>
+					<td><code class="code type">unsiged&nbsp;short&nbsp;int</code></td>
+					<td>2</td>
+					<td>Целое беззнаковое число в диапазоне \(\left[0;65\,535\right]\)</td>
+				</tr>
+				<tr>
+					<td><code class="code type">int</code></td>
+					<td>4</td>
+					<td>Целое знаковое число в диапазоне \(\left[-2\,147\,483\,648;2\,147\,483\,647\right]\) или \(\left[-2^{31};2^{31}-1\right]\)</td>
+				</tr>
+				<tr>
+					<td><code class="code type">unsigned&nbsp;int</code></td>
+					<td>4</td>
+					<td>Целое беззнаковое число в диапазоне \(\left[0;4\,294\,967\,295\right]\) или \(\left[0;2^{32}-1\right]\)</td>
+				</tr>
+				<tr>
+					<td><code class="code type">long&nbsp;long&nbsp;int</code></td>
+					<td>8</td>
+					<td>Целое знаковое число в диапазоне \(\left[-2^{63};2^{63}-1\right]\)</td>
+				</tr>
+				<tr>
+					<td><code class="code type">unsigned&nbsp;long&nbsp;long&nbsp;int</code></td>
+					<td>8</td>
+					<td>Целое беззнаковое число в диапазоне \(\left[0;2^{64}-1\right]\)</td>
+				</tr>
+				<tr>
+					<td colspan="3">Вещественные числа (числа с плавающей точкой)</td>
+				</tr>
+				<tr>
+					<td><code class="code type">float</code></td>
+					<td>4</td>
+					<td>Вещественное число одинарной точности в диапазоне примерно \(\left(1,2\times 10^{-38};3,4\times 10^{38}\right)\) с приблизительно \(7\)-ю знаками после запятой в мантиссе</td>
+				</tr>
+				<tr>
+					<td><code class="code type">double</code></td>
+					<td>8</td>
+					<td>Вещественное число двойной точности в диапазоне примерно \(\left(2,3\times 10^{-308};1,7\times 10^{308}\right)\) с приблизительно \(16\)-ю знаками после запятой в мантиссе</td>
+				</tr>
+				<tr>
+					<td colspan="3">Логические (белевы) значения</td>
+				</tr>
+				<tr>
+					<td><code class="code type">bool</code></td>
+					<td>1</td>
+					<td>Логическое значение, которое может быть равно <code class="code literal">true</code> или <code class="code literal">false</code></td>
+				</tr>
+			</tbody>
+		</table>
+		<p>Функции <code class="code identifier">printf</code> и <code class="code identifier">scanf_s</code> для ввода или вывода значений переменных могут использовать различные спецификаторы формата, почитать о которых можно в документации по фунции <a href="https://cppreference.com/cpp/io/c/fprintf"><code>printf</code></a> и <a href="https://cppreference.com/cpp/io/c/fscanf"><code>scanf</code></a>.</p>
+		<p>Некоторые спецификаторы формата представлены в таблице ниже:</p>
+		<table class="bordered">
+			<tbody>
+				<tr>
+					<th>Тип данных</th>
+					<th>Спецификатор</th>
+					<th>Описание</th>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td><code class="code string">%%</code></td>
+					<td>Вывод символа %</td>
+				</tr>
+				<tr>
+					<td colspan="3">Целые числа</td>
+				</tr>
+				<tr>
+					<td><code class="code type">char</code>, <code class="code type">unsigned&nbsp;char</code></td>
+					<td><code class="code string">%с</code></td>
+					<td>Ввод-вывод одного символа</td>
+				</tr>
+				<tr>
+					<td><code class="code type">char</code></td>
+					<td><code class="code string">%hhd</code></td>
+					<td>Ввод-вывод целого знакового десятичного числа</td>
+				</tr>
+				<tr>
+					<td><code class="code type">unsigned&nbsp;char</code></td>
+					<td><code class="code string">%hhu</code></td>
+					<td>Ввод-вывод целого беззнакового десятичного числа</td>
+				</tr>
+				<tr>
+					<td><code class="code type">short&nbsp;int</code></td>
+					<td><code class="code string">%hd</code></td>
+					<td>Ввод-вывод целого знакового десятичного числа</td>
+				</tr>
+				<tr>
+					<td><code class="code type">unsiged&nbsp;short&nbsp;int</code></td>
+					<td><code class="code string">%hu</code></td>
+					<td>Ввод-вывод целого беззнакового десятичного числа</td>
+				</tr>
+				<tr>
+					<td><code class="code type">int</code></td>
+					<td><code class="code string">%d</code></td>
+					<td>Ввод-вывод целого знакового десятичного числа</td>
+				</tr>
+				<tr>
+					<td><code class="code type">unsiged&nbsp;int</code></td>
+					<td><code class="code string">%u</code></td>
+					<td>Ввод-вывод целого беззнакового десятичного числа</td>
+				</tr>
+				<tr>
+					<td><code class="code type">long&nbsp;long&nbsp;int</code></td>
+					<td><code class="code string">%lld</code></td>
+					<td>Ввод-вывод целого знакового десятичного числа</td>
+				</tr>
+				<tr>
+					<td><code class="code type">unsiged&nbsp;long&nbsp;long&nbsp;int</code></td>
+					<td><code class="code string">%llu</code></td>
+					<td>Ввод-вывод целого беззнакового десятичного числа</td>
+				</tr>
+				<tr>
+					<td><code class="code type">int</code></td>
+					<td><code class="code string">%b</code></td>
+					<td>Ввод-вывод целого беззнакового двоичного числа</td>
+				</tr>
+				<tr>
+					<td><code class="code type">int</code></td>
+					<td><code class="code string">%o</code></td>
+					<td>Ввод-вывод целого беззнакового восьмиричного числа</td>
+				</tr>
+				<tr>
+					<td><code class="code type">int</code></td>
+					<td><code class="code string">%x</code>,<code class="code string">%X</code></td>
+					<td>Ввод-вывод целого беззнакового шестнадцатиричного числа</td>
+				</tr>
+				<tr>
+					<td colspan="3">Вещественные числа (числа с плавающей точкой)</td>
+				</tr>
+				<tr>
+					<td><code class="code type">float</code></td>
+					<td><code class="code string">%f</code></td>
+					<td>Ввод с помощью функции <code class="code identifier">scanf_s</code> вещественного числа</td>
+				</tr>
+				<tr>
+					<td><code class="code type">double</code></td>
+					<td><code class="code string">%lf</code></td>
+					<td>Ввод с помощью функции <code class="code identifier">scanf_s</code>вещественного числа</td>
+				</tr>
+				<tr>
+					<td><code class="code type">float</code>, <code class="code type">double</code></td>
+					<td><code class="code string">%f</code>, <code class="code string">%lf</code></td>
+					<td>Вывод с помощью функции <code class="code identifier">printf</code> вещественного числа (тип <code class="code type">float</code> при этом предварительно преобразуется в тип <code class="code type">double</code>)</td>
+				</tr>
+			</tbody>
+		</table>
+		<p class="example">Пример 2</p>
+		<p>Пример вычисления выражения \(\sqrt{\sin^n{x}+\cos^k{y}}\)</p>
+		<pre class="narrow"><code class="language-cpp" data-line-numbers="">#include &lt;cstdio&gt;
+#include &lt;cmath&gt;
+
+int main()
+{
+    printf("x = ");
+    double x;
+    scanf_s("%lf", &amp;x);
+
+    printf("n = ");
+    int n;
+    scanf_s("%d", &amp;n);
+
+    printf("y = ");
+    double y;
+    scanf_s("%lf", &amp;y);
+
+    printf("k = ");
+    int k;
+    scanf_s("%d", &amp;k);
+
+    double z = sqrt(pow(sin(x), n) + pow(cos(y), k));
+
+    printf("sqrt(pow(sin(%.2f), %d) + pow(cos(%.2f), %d)) = %.2f\n", x, n, y, k, z);
+
+    return 0;
+}
+		</code></pre>
+		<p class="example">Пояснения к примеру:</p>
+		<p>Некоторые функции из заголовочного файла <code class="code string">&lt;cmath&gt;</code> представлены в таблице:</p>
+		<table class="bordered">
+			<tbody>
+				<tr>
+					<th>Функция библиотеки</th>
+					<th>Математическое определение</th>
+				</tr>
+				<tr>
+					<td><code class="code identifier">fabs</code></td>
+					<td>\(\left|x\right|\)</td>
+				</tr>
+				<tr>
+					<td><code class="code identifier">exp</code></td>
+					<td>\(e^x\)</td>
+				</tr>
+				<tr>
+					<td><code class="code identifier">log</code></td>
+					<td>\(\ln{x}\)</td>
+				</tr>
+				<tr>
+					<td><code class="code identifier">log10</code></td>
+					<td>\(\log{}_{10}{x}\)</td>
+				</tr>
+				<tr>
+					<td><code class="code identifier">log2</code></td>
+					<td>\(\log{}_2{x}\)</td>
+				</tr>
+				<tr>
+					<td><code class="code identifier">pow</code></td>
+					<td>\(x^y\)</td>
+				</tr>
+				<tr>
+					<td><code class="code identifier">sqrt</code></td>
+					<td>\(\sqrt{x}\)</td>
+				</tr>
+				<tr>
+					<td><code class="code identifier">cbrt</code></td>
+					<td>\(\sqrt[3]{x}\)</td>
+				</tr>
+				<tr>
+					<td><code class="code identifier">hypot</code></td>
+					<td>\(\sqrt{x^2+y^2}\)</td>
+				</tr>
+				<tr>
+					<td><code class="code identifier">sin</code></td>
+					<td>\(\sin{x}\)</td>
+				</tr>
+				<tr>
+					<td><code class="code identifier">cos</code></td>
+					<td>\(\cos{x}\)</td>
+				</tr>
+				<tr>
+					<td><code class="code identifier">tan</code></td>
+					<td>\(\mathop{\rm tg}\nolimits{x}\)</td>
+				</tr>
+				<tr>
+					<td><code class="code identifier">asin</code></td>
+					<td>\(\arcsin{x}\)</td>
+				</tr>
+				<tr>
+					<td><code class="code identifier">acos</code></td>
+					<td>\(\arccos{x}\)</td>
+				</tr>
+				<tr>
+					<td><code class="code identifier">atan</code></td>
+					<td>\(\mathop{\rm arctg}\nolimits{x}\)</td>
+				</tr>
+				<tr>
+					<td><code class="code identifier">ceil</code></td>
+					<td>\(\lceil x\rceil\)&nbsp;&mdash; округление к ближайшему целому, большему данного</td>
+				</tr>
+				<tr>
+					<td><code class="code identifier">floor</code></td>
+					<td>\(\lfloor x\rfloor\)&nbsp;&mdash; округление к ближайшему целому, меньшему данного</td>
+				</tr>
+				<tr>
+					<td><code class="code identifier">round</code></td>
+					<td>\(\left[x\right]\)&nbsp;&mdash; округление к ближайшему целому</td>
+				</tr>
+			</tbody>
+		</table>
+		<script>
+			hljs.highlightAll();
+		</script>
+	</body>
+</html>

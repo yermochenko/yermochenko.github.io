@@ -25,6 +25,11 @@ export default {
 	}, {
 		title: 'Языки программирования C/C++ (базовый уровень)',
 		abbr: 'C/C++[B]',
-		url: '/c-and-c++/index.html'
+		url: '/c-and-c++/index.html',
+		children: [{
+			title: 'Упражнение №1. Линейные алгоритмы',
+			abbr: 'Упражнение №1',
+			url: '/c-and-c++/labs/lab-1-linear-algorithms/index.html'
+		}]
 	}]
 };
